@@ -1,0 +1,147 @@
+1.	Difference between HTTP1.1 vs HTTP2:
+
+HTTP 1.1:
+1)	Key features:	It supports connection reuse i.e. for every TCP connection there 
+                could be multiple requests and responses, and pipelining where
+                the client can request several resources from the server at once.
+                However, pipelining was hard to implement due to issues such
+                as head-of-line blocking and was not a feasible solution.	
+                
+2)	Status Code:	Introduces a warning header field to carry additional information
+                about the status of a message. Can define 24 status codes, error
+                reporting is quicker and more efficient.	Underlying semantics of
+                HTTP such as headers, status codes remains the same.
+3)	Caching:	Expands on the caching support by using additional headers like 
+             cache-control, conditional headers like If-Match and by using entity
+             tags.
+4)	Web Traffic:	HTTP/1.1 provides faster delivery of web pages and reduces web 
+                traffic as compared to HTTP/1.0. However, TCP starts slowly and 
+                with domain sharding (resources can be downloaded simultaneously
+                by using multiple domains), connection reuse and pipelining,
+                there is an increased risk of network congestion.
+5)	Authentication Mechanism:	It is relatively secure since it uses digest 
+                             authentication, NTLM authentication.	
+
+HTTP 2.0:
+1) Key Features: Uses multiplexing, where over a single 
+                 TCP connection resources to be delivered 
+                 are interleaved and arrive at the client 
+                 almost at the same time. It is done using 
+                 streams which can be prioritized, can have 
+                 dependencies and individual flow control. 
+                 It also provides a feature called server 
+                 push that allows the server to send data 
+                 that the client will need but has not yet
+                 requested.
+2)Status Code: Underlying semantics of HTTP such as headers, status codes remains
+               the same.
+3)Caching:	HTTP/2 does not change much in terms of caching. With the server push 
+          feature if the client finds the resources are already present in the 
+          cache, it can cancel the pushed stream.
+4)Web Traffic: 	HTTP/2 utilizes multiplexing and server push to effectively 
+               reduce the page load time by a greater margin along with being 
+               less sensitive to network delays.
+5)Authentication Mechanism:Security concerns from previous versions will 
+                          continue to be seen in HTTP/2. However, it is better 
+                          equipped to deal with them due to new TLS features 
+                          like connection error of type Inadequate_Security.
+
+Implement HTTP/2 on Your Website:
+
+Since using HTTP/2 is an invisible process when correctly implemented, your 
+website may already be using it without your realization. There is an easy way 
+to check this:
+•	Open the web developer tool on the web browser (like Firefox).
+•	Under the network tab, select any of the resources and check the version number under the headers tab.
+While HTTP/2 does not mandate the use of SSL, it is crucial to install an SSL 
+certificate because the leading browsers, including Firefox and Chrome, have 
+decided to implement HTTP/2 only over TLS (HTTPS). In order to enable HTTP/2 
+it is essential to get an SSL/TLS certificate and make every page on the website
+ https.
+
+
+2.	Objects and its internal representation in javascript
+
+
+Loosely speaking, objects in JavaScript may be defined as an unordered collection
+ of related data, of primitive or reference types, in the form of “key: value” 
+pairs. These keys can be variables or functions and are called properties and 
+methods, respectively, in the context of an object.
+
+A javaScript object is an entity having state and behavior (properties and method)
+. For example: car, pen, bike, chair, glass, keyboard, monitor etc. JavaScript 
+is an object-based language. Everything is an object in JavaScript. JavaScript 
+is template based not class based.
+
+For Eg. If your object is a student, it will have properties like name, age, 
+address, id, etc and methods like updateAddress, updateNam, etc.
+
+Objects and properties:
+A JavaScript object has properties associated with it. A property of an object 
+can be explained as a variable that is attached to the object. Object properties 
+are basically the same as ordinary JavaScript variables, except for the 
+attachment to objects. The properties of an object define the characteristics
+of the object. You access the properties of an object with a simple dot-notation:
+
+objectName.propertyName
+
+Like all JavaScript variables, both the object name (which could be a normal 
+variable) and property name are case sensitive. You can define a property by 
+assigning it a value. For example, let’s create an object named myBike and give 
+it properties named make, model, and year as follows:
+
+var myBike = new Object();
+myBike.make = 'Hero';
+myBike.model = 'Splendour';
+myBike.year = 1964;
+
+
+An object property name can be any valid JavaScript string, or anything that can
+be converted to a string, including the empty string. However, any property name 
+that is not a valid JavaScript identifier (for example, a property name that has 
+a space or a hyphen, or that starts with a number) can only be accessed using 
+the square bracket notation. This notation is also very useful when property 
+names are to be dynamically determined (when the property name is not determined 
+until runtime). Examples are as follows:
+
+var myObj = new Object(),
+    str = 'myString',
+    rand = Math.random(),
+    obj = new Object();
+myObj.type              = 'Dot syntax';
+myObj['date created']   = 'String with space';
+myObj[str]              = 'String value';
+myObj[rand]             = 'Random Number';
+myObj[obj]              = 'Object';
+myObj['']               = 'Even an empty string';console.log(myObj);
+myCar[propertyName] = 'Mustang';
+  }
+  return result;
+}
+
+Create JavaScript Object with Constructor:
+
+Constructor is nothing but a function and with help of new keyword, constructor 
+function allows to create multiple objects of same flavor as shown below
+function Vehicle(name, maker) {
+   this.name = name;
+   this.maker = maker;
+}
+let car1 = new Vehicle(’Fiesta’, 'Ford’);
+let car2 = new Vehicle(’Santa Fe’, 'Hyundai’)
+console.log(car1.name);    
+console.log(car2.name);    
+Objects can also be created using the Object.create() method. This method can be 
+very useful, because it allows you to choose the prototype object for the object 
+you want to create, without having to define a constructor function.
+
+
+var animal1 = Object.create(Animal);
+animal1.displayType(); 
+var fish = Object.create(Animal);
+fish.type = 'Fishes';
+fish.displayType(); 
+
+
+
+
